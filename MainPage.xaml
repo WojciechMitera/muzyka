@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="odtwarzacz_muzyki.MainPage"
+             Title=""
+             BackgroundColor="DarkGray">
+
+    <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Start" Padding="0,140,0,0" Spacing="10">
+        <HorizontalStackLayout WidthRequest="290" VerticalOptions="End">
+            <Button x:Name="add" Text="+" FontSize="20" WidthRequest="20" HeightRequest="20"  CornerRadius="20" BackgroundColor="#0085ff"></Button>
+        </HorizontalStackLayout>
+
+        <Image WidthRequest="280" HeightRequest="280" BackgroundColor="Grey"></Image>
+        <HorizontalStackLayout WidthRequest="290" VerticalOptions="Center">
+            <VerticalStackLayout>
+                <Label Text="{Binding Title}" TextColor="White" FontSize="30" FontAttributes="Bold" WidthRequest="100" HorizontalOptions="Start"></Label>
+                <Label Text="Artist" TextColor="White" FontSize="15" WidthRequest="90" HorizontalOptions="Start"></Label>
+            </VerticalStackLayout>
+            <Label Text="♡" TextColor="White" FontSize="30" HorizontalTextAlignment="End" WidthRequest="180"></Label>
+        </HorizontalStackLayout>
+
+
+        <Slider ThumbColor="#0085ff" BackgroundColor="Transparent" WidthRequest="290">
+
+        </Slider>
+        <HorizontalStackLayout HorizontalOptions="Center" Spacing="20">
+            <Button Text="ᐊᐊ" CornerRadius="20" BackgroundColor="#0085ff"></Button>
+            <Button Text="▶" CornerRadius="20" BackgroundColor="#0085ff"></Button>
+            <Button Text="ᐅᐅ" CornerRadius="20" BackgroundColor="#0085ff"></Button>
+        </HorizontalStackLayout>
+
+    </VerticalStackLayout>
+
+</ContentPage>
