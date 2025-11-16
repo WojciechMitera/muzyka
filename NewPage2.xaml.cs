@@ -1,6 +1,8 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json;
 
+
+
 namespace odtwarzacz_muzyki;
 
 public partial class NewPage2 : ContentPage
@@ -8,8 +10,9 @@ public partial class NewPage2 : ContentPage
     private ObservableCollection<Songs> _songs = new();
     private readonly string _songsFilePath = Path.Combine(FileSystem.AppDataDirectory, "songs.json");
     private int _currentIndex = -1;
-    //int quantity = 0;
+    int quantity = 0;
     Playlists _playlist;
+   
     public NewPage2(Playlists selected)
     {
         InitializeComponent();
@@ -19,7 +22,8 @@ public partial class NewPage2 : ContentPage
     }
     private async void Add_Button_Clicked(object sender, EventArgs e)
     {
-        //ilosc.Text = quantity + " songs";
+        List<Songs> lista = [];
+
         try
         {
             var result = await FilePicker.PickMultipleAsync(new PickOptions
@@ -44,13 +48,17 @@ public partial class NewPage2 : ContentPage
                     });
 
                 }
-                //quantity++;
+                for (int i = 0; i < _songs.Count; i++)
+                {
+                    lista.Add(_songs[i]);
+                }
+                ilosc.Text = lista.Count.ToString() + " songs";
             }
             await SaveSongsAsync();
         }
         catch (Exception ex)
         {
-            await DisplayAlert("Błąd", $"Nie udało się wybrać plików: {ex.Message}", "OK");
+            await DisplayAlert("B  d", $"Nie uda o si  wybra  plik w: {ex.Message}", "OK");
         }
     }
 
@@ -63,7 +71,7 @@ public partial class NewPage2 : ContentPage
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Błąd zapisu piosenek: {ex.Message}");
+            Console.WriteLine($"B  d zapisu piosenek: {ex.Message}");
         }
     }
 
@@ -86,7 +94,7 @@ public partial class NewPage2 : ContentPage
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Błąd odczytu piosenek: {ex.Message}");
+            Console.WriteLine($"B  d odczytu piosenek: {ex.Message}");
         }
     }
 
@@ -105,36 +113,32 @@ public partial class NewPage2 : ContentPage
 
     }
 
-    /*private void PlayButton_Clicked(object sender, EventArgs e)
+    private async void list_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        if (_songs.Count == 0) return;
-        if (_currentIndex == -1) _currentIndex = 0;
-
-        Player.Source = _songs[_currentIndex].Path; // ustaw Source zawsze
-        Player.Play();
-        CurrentSongLabel.Text = $"▶ {_songs[_currentIndex].Title}";
+        if (e.CurrentSelection.FirstOrDefault() is Songs selected)
+        {
+            await Navigation.PushAsync(new MainPage(selected));
+        }
+        list.SelectedItem = null;
     }
 
-    private void NextButton_Clicked(object sender, EventArgs e)
+    private void delete_Clicked(object sender, EventArgs e)
     {
-
+        List<Songs> lista = [];
+        var button = sender as Button;
+        var s = button?.BindingContext as Songs;
+        if (s != null)
+        {
+            _songs.Remove(s);
+            for (int i = 0; i < _songs.Count; i++)
+            {
+                lista.Add(_songs[i]);
+            }
+            for(int i = 0; i < lista.Count; i++)
+            {
+                lista.Remove(s);
+            }
+            ilosc.Text = lista.Count.ToString() + " songs";
+        }
     }
-
-    private void PauseButton_Clicked(object sender, EventArgs e)
-    {
-        if (Player.CurrentState == MediaElementState.Playing)
-        {
-            Player.Pause();
-            CurrentSongLabel.Text = $"⏸ {_songs[_currentIndex].Title}";
-        }
-        else if (Player.CurrentState == MediaElementState.Paused)
-        {
-            Player.Play();
-            CurrentSongLabel.Text = $"▶ {_songs[_currentIndex].Title}";
-        }
-        else
-        {
-            DisplayAlert("Info", "Brak odtwarzania do wznowienia.", "OK");
-        }
-    }*/
 }

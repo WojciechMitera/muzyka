@@ -1,4 +1,5 @@
-using System.Collections.ObjectModel;
+ï»¿using System.Collections.ObjectModel;
+using System.Text.Json;
 
 
 
@@ -7,7 +8,7 @@ namespace odtwarzacz_muzyki;
 public partial class NewPage1 : ContentPage
 {
     //private ObservableCollection<Songs> _songs = new();
-    //private readonly string _songsFilePath = Path.Combine(FileSystem.AppDataDirectory, "songs.json");
+    
     //private int _currentIndex = -1;
     ObservableCollection<Playlists> playlist { get; set; }
     public NewPage1()
@@ -19,25 +20,12 @@ public partial class NewPage1 : ContentPage
 
 
 
-    /*private async Task SaveSongsAsync()
-    {
-        try
-        {
-            var json = JsonSerializer.Serialize(_songs);
-            await File.WriteAllTextAsync(_songsFilePath, json);
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"B³¹d zapisu piosenek: {ex.Message}");
-        }
-    }*/
-
-
+    
 
     private async void Button_Clicked(object sender, EventArgs e)
     {
-        string result = await DisplayPromptAsync("Utwórz playliste","");
-        
+        string result = await DisplayPromptAsync("UtwÃ³rz playliste", "");
+
         playlist.Add(new Playlists { Title = result });
         list.ItemsSource = playlist;
     }
@@ -62,36 +50,4 @@ public partial class NewPage1 : ContentPage
         }
     }
 
-
-    /*{
-   try
-   {
-       var result = await FilePicker.PickMultipleAsync(new PickOptions
-       {
-           PickerTitle = "Wybierz pliki muzyczne",
-           FileTypes = new FilePickerFileType(new Dictionary<DevicePlatform, IEnumerable<string>>
-               {
-                   { DevicePlatform.WinUI, new[] { ".mp3", ".wav", ".flac" } },
-                   { DevicePlatform.Android, new[] { "audio/*" } },
-                   { DevicePlatform.iOS, new[] { "public.audio" } }
-               })
-       });
-
-       if (result != null)
-       {
-           foreach (var file in result)
-           {
-               _songs.Add(new Songs
-               {
-                   Title = System.IO.Path.GetFileNameWithoutExtension(file.FileName),
-                   Path = file.FullPath
-               });
-           }
-       }
-       await SaveSongsAsync();
-   }
-   catch (Exception ex)
-   {
-       await DisplayAlert("B³¹d", $"Nie uda³o siê wybraæ plików: {ex.Message}", "OK");
-   }*/
 }

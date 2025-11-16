@@ -15,24 +15,25 @@
         </VerticalStackLayout>
 
 
-        <CollectionView BackgroundColor="#2F2D2D" x:Name="list" HeightRequest="650" WidthRequest="370" SelectionMode="Single"  Margin="20,0,20,0">
+        <CollectionView BackgroundColor="#2F2D2D" x:Name="list" HeightRequest="650" WidthRequest="370" SelectionMode="Single"  Margin="20,0,20,0" SelectionChanged="list_SelectionChanged">
 
-        <CollectionView.ItemTemplate>
-            <DataTemplate>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
 
-                <HorizontalStackLayout Style="{StaticResource horizontal}" Margin="0,30,0,0" Padding="0,10,0,0" Spacing="50" WidthRequest="350" VerticalOptions="Center" HorizontalOptions="Center">
-    <Image WidthRequest="50" HeightRequest="50" BackgroundColor="#D9D9D9"></Image>
-    <VerticalStackLayout>
-        <Label Text="{Binding Title}" FontAttributes="Bold" TextColor="#D9D9D9" FontSize="25" Padding="0,0,10,0" WidthRequest="150" VerticalTextAlignment="Center" HorizontalTextAlignment="Start"></Label>
-           
+                    <HorizontalStackLayout Style="{StaticResource horizontal}" Margin="0,30,0,0" Padding="0,10,0,0" Spacing="50" WidthRequest="350" VerticalOptions="Center" HorizontalOptions="Center">
+                        <Image WidthRequest="50" HeightRequest="50" BackgroundColor="#D9D9D9"></Image>
+                        <VerticalStackLayout>
+                            <Label Text="{Binding Title}" FontAttributes="Bold" TextColor="#D9D9D9" FontSize="25" Padding="0,0,10,0" WidthRequest="150" VerticalTextAlignment="Center" HorizontalTextAlignment="Start"></Label>
+
+                        </VerticalStackLayout>
+
+                        <Button x:Name="delete" Text="-" BackgroundColor="#D9D9D9" WidthRequest="30" HeightRequest="30" CornerRadius="100" TextColor="#2F2D2D" FontSize="20" FontAttributes="Bold" Clicked="delete_Clicked"></Button>
+
+                        <!--<Label Text="{Binding Path}"></Label>-->
+                    </HorizontalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
     </VerticalStackLayout>
 
-    <Button x:Name="delete" Text="-" BackgroundColor="#D9D9D9" WidthRequest="30" HeightRequest="30" CornerRadius="100" TextColor="#2F2D2D" FontSize="20" FontAttributes="Bold" ></Button>
-
-    <!--<Label Text="{Binding Path}"></Label>-->
-</HorizontalStackLayout>
-            </DataTemplate>
-        </CollectionView.ItemTemplate>
-    </CollectionView>
-    </VerticalStackLayout>
 </ContentPage>

@@ -3,20 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="odtwarzacz_muzyki.MainPage"
              Title=""
-             BackgroundColor="DarkGray">
+             BackgroundColor="#2F2D2D">
 
     <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Start" Padding="0,140,0,0" Spacing="10">
-        <HorizontalStackLayout WidthRequest="290" VerticalOptions="End">
-            <Button x:Name="add" Text="+" FontSize="20" WidthRequest="20" HeightRequest="20"  CornerRadius="20" BackgroundColor="#0085ff"></Button>
-        </HorizontalStackLayout>
 
-        <Image WidthRequest="280" HeightRequest="280" BackgroundColor="Grey"></Image>
+
+        <Image WidthRequest="280" HeightRequest="280" BackgroundColor="#D9D9D9"></Image>
         <HorizontalStackLayout WidthRequest="290" VerticalOptions="Center">
             <VerticalStackLayout>
-                <Label Text="{Binding Title}" TextColor="White" FontSize="30" FontAttributes="Bold" WidthRequest="100" HorizontalOptions="Start"></Label>
-                <Label Text="Artist" TextColor="White" FontSize="15" WidthRequest="90" HorizontalOptions="Start"></Label>
+                <Label x:Name="tytul" Text="Title" TextColor="#D9D9D9" FontSize="15" FontAttributes="Bold" WidthRequest="200" HorizontalOptions="Start"></Label>
+                <!--><Label Text="Artist" TextColor="#D9D9D9" FontSize="15" WidthRequest="90" HorizontalOptions="Start"></Label>-->
             </VerticalStackLayout>
-            <Label Text="♡" TextColor="White" FontSize="30" HorizontalTextAlignment="End" WidthRequest="180"></Label>
+            <!--<Label Text="♡" TextColor="#D9D9D9" FontSize="30" HorizontalTextAlignment="End" WidthRequest="180"></Label>-->
         </HorizontalStackLayout>
 
 
@@ -24,11 +22,14 @@
 
         </Slider>
         <HorizontalStackLayout HorizontalOptions="Center" Spacing="20">
-            <Button Text="ᐊᐊ" CornerRadius="20" BackgroundColor="#0085ff"></Button>
-            <Button Text="▶" CornerRadius="20" BackgroundColor="#0085ff"></Button>
-            <Button Text="ᐅᐅ" CornerRadius="20" BackgroundColor="#0085ff"></Button>
+         
+            <Button x:Name="PrevButton" Text="ᐊᐊ" CornerRadius="20" BackgroundColor="#0085ff" Clicked="PrevButton_Clicked"/>
+            <Button x:Name="PlayButton" Text="▶" CornerRadius="20" BackgroundColor="#0085ff" Clicked="PlayButton_Clicked"/>
+            <Button x:Name="PauseButton" Text="▐▐" CornerRadius="20" BackgroundColor="#0085ff" Clicked="PauseButton_Clicked"/>
+            <Button x:Name="NextButton" Text="ᐅᐅ" CornerRadius="20" BackgroundColor="#0085ff" Clicked="NextButton_Clicked"/>
         </HorizontalStackLayout>
 
     </VerticalStackLayout>
+
 
 </ContentPage>

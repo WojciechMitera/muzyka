@@ -21,7 +21,7 @@
                         <VerticalStackLayout>
                             <Label Text="{Binding Title}" FontAttributes="Bold" TextColor="#D9D9D9" FontSize="25" Padding="0,0,10,0" WidthRequest="150" VerticalTextAlignment="Center" HorizontalTextAlignment="Start"></Label>
                             <Label Text="Playlist   0 songs" TextColor="#D9D9D9" WidthRequest="150" VerticalTextAlignment="Center" HorizontalTextAlignment="Start"/>
-                        
+
                         </VerticalStackLayout>
 
                         <Button x:Name="delete" Text="-" BackgroundColor="#D9D9D9" WidthRequest="30" HeightRequest="30" CornerRadius="100" TextColor="#2F2D2D" FontSize="20" FontAttributes="Bold" Clicked="delete_Clicked"></Button>
@@ -32,4 +32,5 @@
             </CollectionView.ItemTemplate>
         </CollectionView>
     </VerticalStackLayout>
+
 </ContentPage>
