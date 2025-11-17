@@ -1,15 +1,9 @@
-﻿using System.Collections.ObjectModel;
-using System.Text.Json;
+using System.Collections.ObjectModel;
 
-
-
-namespace odtwarzacz_muzyki;
+namespace MauiApp4;
 
 public partial class NewPage1 : ContentPage
 {
-    //private ObservableCollection<Songs> _songs = new();
-    
-    //private int _currentIndex = -1;
     ObservableCollection<Playlists> playlist { get; set; }
     public NewPage1()
     {
@@ -20,11 +14,11 @@ public partial class NewPage1 : ContentPage
 
 
 
-    
+
 
     private async void Button_Clicked(object sender, EventArgs e)
     {
-        string result = await DisplayPromptAsync("Utwórz playliste", "");
+        string result = await DisplayPromptAsync("Utw�rz playliste", "");
 
         playlist.Add(new Playlists { Title = result });
         list.ItemsSource = playlist;
@@ -49,5 +43,4 @@ public partial class NewPage1 : ContentPage
             playlist.Remove(_playlist);
         }
     }
-
 }

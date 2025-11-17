@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 
-namespace odtwarzacz_muzyki
+namespace MauiApp4
 {
     public static class MauiProgram
     {

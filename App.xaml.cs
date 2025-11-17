@@ -1,4 +1,4 @@
-﻿namespace odtwarzacz_muzyki
+﻿namespace MauiApp4
 {
     public partial class App : Application
     {

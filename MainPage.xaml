@@ -1,9 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="odtwarzacz_muzyki.MainPage"
-             Title=""
-             BackgroundColor="#2F2D2D">
+             x:Class="MauiApp4.MainPage" Title="" BackgroundColor="#2F2D2D">
 
     <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Start" Padding="0,140,0,0" Spacing="10">
 
@@ -18,11 +16,11 @@
         </HorizontalStackLayout>
 
 
-        <Slider ThumbColor="#0085ff" BackgroundColor="Transparent" WidthRequest="290">
+        <Slider x:Name="pasek" ThumbColor="#0085ff" BackgroundColor="Transparent" WidthRequest="290">
 
         </Slider>
         <HorizontalStackLayout HorizontalOptions="Center" Spacing="20">
-         
+
             <Button x:Name="PrevButton" Text="ᐊᐊ" CornerRadius="20" BackgroundColor="#0085ff" Clicked="PrevButton_Clicked"/>
             <Button x:Name="PlayButton" Text="▶" CornerRadius="20" BackgroundColor="#0085ff" Clicked="PlayButton_Clicked"/>
             <Button x:Name="PauseButton" Text="▐▐" CornerRadius="20" BackgroundColor="#0085ff" Clicked="PauseButton_Clicked"/>

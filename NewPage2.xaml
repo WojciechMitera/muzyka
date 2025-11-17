@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="odtwarzacz_muzyki.NewPage2"
+             x:Class="MauiApp4.NewPage2"
              Title="" BackgroundColor="#2F2D2D">
     <VerticalStackLayout>
         <Label x:Name="tytul" FontSize="50" TextColor="#D9D9D9" FontAttributes="Bold" Margin="20,20,0,0"></Label>
@@ -35,5 +35,4 @@
             </CollectionView.ItemTemplate>
         </CollectionView>
     </VerticalStackLayout>
-
 </ContentPage>

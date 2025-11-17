@@ -1,8 +1,9 @@
-﻿using Plugin.Maui.Audio;
+﻿
+using Plugin.Maui.Audio;
 using System.Collections.ObjectModel;
 using System.Text.Json;
 
-namespace odtwarzacz_muzyki
+namespace MauiApp4
 {
     public partial class MainPage : ContentPage
     {
@@ -13,6 +14,7 @@ namespace odtwarzacz_muzyki
         private IAudioPlayer _player; // Korzystamy teraz z doinstalowanej biblioteki Plugin.Maui.Audio
         private readonly IAudioManager _audioManager; // /\
         private int _currentSongIndex = -1;
+        private bool _working = false;
 
 
         Songs _tytul;
@@ -67,11 +69,13 @@ namespace odtwarzacz_muzyki
 
             _currentSongIndex = (_currentSongIndex - 1 + _songs.Count) % _songs.Count;
             tytul.Text = _songs[_currentSongIndex].Title;
+           
             await PlaySong(_songs[_currentSongIndex]);
         }
 
         private async void PlayButton_Clicked(object sender, EventArgs e)
         {
+            
             // Ustawiamy indeks na pierwszą piosenke
             if (_currentSongIndex == -1 && _songs.Count > 0)
                 _currentSongIndex = 0;
@@ -79,6 +83,17 @@ namespace odtwarzacz_muzyki
             // Sprawdzamy poprawność ideksu
             if (_currentSongIndex >= 0 && _currentSongIndex < _songs.Count)
             {
+                _working = true;
+
+                while (_working && pasek.Value < pasek.Maximum)
+                {
+                    pasek.Value++;
+                    await Task.Delay(1000);
+                }
+
+                _working = false;
+                _currentSongIndex = (_currentSongIndex - 1 + _songs.Count) % _songs.Count;
+                tytul.Text = _songs[_currentSongIndex].Title;
                 // Odtwarzamy piosenke przy pomocy napisanej funkcji PlaySong przekazując ją z odpowiednim indeksem
                 await PlaySong(_songs[_currentSongIndex]);
             }
@@ -91,7 +106,7 @@ namespace odtwarzacz_muzyki
                 // To powodowało problemy w poprzedniej próbie, musimy zatrzymać i usunąć odtwarzacz jeżeli juz istnieje
                 _player?.Stop();
                 _player?.Dispose();
-
+                
 
                 //  Otwieramy piosenkę
                 using var stream = File.OpenRead(song.Path);
@@ -101,6 +116,7 @@ namespace odtwarzacz_muzyki
 
                 // I powinno być słychać jakieś dzwięki :D 
                 _player.Play();
+               
             }
             catch (Exception ex)
             {
@@ -111,7 +127,7 @@ namespace odtwarzacz_muzyki
         private async void NextButton_Clicked(object sender, EventArgs e)
         {
             if (_songs.Count == 0) return;
-            
+
             _currentSongIndex = (_currentSongIndex + 1) % _songs.Count;
             tytul.Text = _songs[_currentSongIndex].Title;
             await PlaySong(_songs[_currentSongIndex]);
@@ -131,3 +147,4 @@ namespace odtwarzacz_muzyki
     }
 
 }
+

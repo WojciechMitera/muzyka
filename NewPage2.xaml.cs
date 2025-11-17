@@ -1,9 +1,7 @@
-﻿using System.Collections.ObjectModel;
+using System.Collections.ObjectModel;
 using System.Text.Json;
 
-
-
-namespace odtwarzacz_muzyki;
+namespace MauiApp4;
 
 public partial class NewPage2 : ContentPage
 {
@@ -12,7 +10,7 @@ public partial class NewPage2 : ContentPage
     private int _currentIndex = -1;
     int quantity = 0;
     Playlists _playlist;
-   
+
     public NewPage2(Playlists selected)
     {
         InitializeComponent();
@@ -134,7 +132,7 @@ public partial class NewPage2 : ContentPage
             {
                 lista.Add(_songs[i]);
             }
-            for(int i = 0; i < lista.Count; i++)
+            for (int i = 0; i < lista.Count; i++)
             {
                 lista.Remove(s);
             }
